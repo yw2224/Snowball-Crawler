@@ -1,0 +1,15 @@
+---
+homepage: 'https://xueqiu.com'
+retrydelay: 30 # in seconds
+redisdb: 1 # db to use to save data
+newslisttls: snowball:newslist
+newslisthashtable: snowball:newslist:category
+newsqueue: snow_ball_news
+newslistqueue: snow_ball_news
+commentsqueue: snow_ball_comments
+blobcontainer: snowballnews
+ua: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+
+newslistapi: "https://xueqiu.com/v4/statuses/public_timeline_by_category.json"
+commentsapi: https://xueqiu.com/statuses/comments.json?id=%s&count=10&page=%s&reply=true&type=status&split=true&asc=false
+...

@@ -1,0 +1,73 @@
+---
+# alias
+pipeline_tags:  &pipeline_tags
+  - job
+  - host
+  - pid
+  - timezone
+  - status
+pipeline_fields: &pipeline_fields
+  err: !!str string # map for js: Influx.FieldType.STRING
+  res: !!str string # map for js: Influx.FieldType.STRING
+pipeline_log: &pipeline_log
+  database: pipeline_log
+  schema:
+    scheduler:
+      measurement: scheduler
+      fields: *pipeline_fields
+      tags:  *pipeline_tags
+    getter:
+      measurement: getter
+      fields: *pipeline_fields
+      tags: *pipeline_tags
+    cleaner:
+      measurement: cleaner
+      fields: *pipeline_fields
+      tags: *pipeline_tags
+    aligner:
+      measurement: aligner
+      fields: *pipeline_fields
+      tags: *pipeline_tags
+quote_tags: &quote_tags
+  - code
+  - stock_name
+  - sector
+  - market
+  - board
+  - zip_code
+  - timezone
+quote_fields: &quote_fields
+  closing_price: !!str float # map for js: Influx.FieldType.FLOAT
+  highest_price: !!str float # map for js: Influx.FieldType.FLOAT
+  lowest_price: !!str float # map for js: Influx.FieldType.FLOAT
+  opening_price: !!str float # map for js: Influx.FieldType.FLOAT
+  pre_closing_price: !!str float # map for js: Influx.FieldType.FLOAT
+  up_down_amount: !!str float # map for js: Influx.FieldType.FLOAT
+  up_down_rate: !!str float # map for js: Influx.FieldType.FLOAT
+  turnover_rate: !!str float # map for js: Influx.FieldType.FLOAT
+  trade_volume: !!str float # map for js: Influx.FieldType.FLOAT
+  trade_amount: !!str float # map for js: Influx.FieldType.FLOAT
+  total_market_capitalization: !!str float # map for js: Influx.FieldType.FLOAT
+  circulation_market_capitalization: !!str float # map for js: Influx.FieldType.FLOAT
+  trade_num: !!str float # map for js: Influx.FieldType.FLOAT
+quote: &quote
+  database: quote
+  schema:
+    quote:
+      measurement: quote
+      fields: *quote_fields
+      tags: *quote_tags
+# config
+pro:
+  host: 127.0.0.1
+  port: 30002
+  handlers:
+    pipeline_log: *pipeline_log
+    quote: *quote
+test:
+  host: 127.0.0.1
+  port: 40002
+  handlers:
+    pipeline_log: *pipeline_log
+    quote: *quote
+...

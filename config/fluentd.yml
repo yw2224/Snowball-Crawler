@@ -1,0 +1,10 @@
+---
+pro:
+  host: localhost
+  port: 30004
+  logger_name: pipeline
+test:
+  host: localhost
+  port: 40004
+  logger_name: pipeline
+...

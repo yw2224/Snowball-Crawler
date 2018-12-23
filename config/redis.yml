@@ -1,0 +1,10 @@
+---
+pro:
+  host: 127.0.0.1
+  port: 30001
+  stock_list: sl
+test:
+  host: 127.0.0.1
+  port: 40001
+  stock_list: sl
+...

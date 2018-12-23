@@ -1,0 +1,68 @@
+---
+getter:
+  stock_list:
+    timeline_suffix: ':getter'
+    timeline_prefix: 'stock_list:timeline:'
+    hash_table: 'stock_list:getter.latest'
+    container: 'stocklistblob'
+    queue: 'stock_list:getter.queue'
+    cron: '0 0 * * *' # every day, 00:00
+  quote:
+    timeline_suffix: ':getter'
+    timeline_prefix: 'quote:timeline:'
+    hash_table: 'quote:getter.latest'
+    container: 'quoteblob'
+    queue: 'quote:getter.queue'
+    cron: '0 1 * * *' # every day, 1:00
+
+cfi_crawler: # cfi reports crawler setting
+  reports:
+    timeline_suffix: ':crawler'
+    timeline_prefix: 'reports:timeline:'
+    hash_table: 'reports:crawler.latest'
+    container: 'cfi'
+    queue: 'cfi:crawler.queue'
+    cron: '0 0 * * 0' # every sunday, 00:00
+
+cfi_parser: # cfi reports crawler setting
+  reports:
+    timeline_suffix: ':parser'
+    timeline_prefix: 'reports:timeline:'
+    hash_table: 'reports:parser.latest'
+    container: 'cfi'
+    queue: 'cfi:parser.queue'
+    cron: '0 5 * * 0' # every sunday, 00:00
+    
+cleaner:
+  stock_list:
+    timeline_suffix: ':cleaner'
+    timeline_prefix: 'stock_list:timeline:'
+    hash_table: 'stock_list:cleaner.latest'
+    container: 'stocklistblob'
+    blob: 'stock_list.json'
+    cron: '30 0 * * *' # every day, 00:30
+    sl_url_key: 'stock_list:blob_url'
+aligner:
+  quote:
+    timeline_suffix: ':aligner'
+    timeline_prefix: 'quote:timeline:'
+    hash_table: 'quote:aligner.latest'
+    container: 'quoteblob'
+    queue: 'quote:aligner.queue'
+    cron: '0 2 * * *' # every day, 2:00
+job:
+  quarter_sample:
+    timeline_suffix: ':quarter.sample'
+    timeline_prefix: 'quote:timeline:'
+    hash_table: 'quote:quarter.sample.latest'
+    container: 'quotesample'
+    queue: 'quote:quarter.sample.queue'
+    cron: '0 5 * * *' # every day, 5:00
+  day_sample:
+    timeline_suffix: ':day.sample'
+    timeline_prefix: 'quote:timeline:'
+    hash_table: 'quote:day.sample.latest'
+    container: 'quotesample'
+    queue: 'quote:day.sample.queue'
+    cron: '0 3 * * *' # every day, 3:00
+...

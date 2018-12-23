@@ -1,0 +1,5 @@
+---
+container:
+  stock_list: stocklist
+stocklisturl: "https://financestore.blob.core.windows.net/stocklistblob/stock_list.json?st=2018-02-28T00%3A10%3A00Z&se=2020-03-09T00%3A10%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=oUHS9Gww2mrJHmXQNvZunZtSPkloRIE0Q7l8x%2B485Ts%3D"
+...
